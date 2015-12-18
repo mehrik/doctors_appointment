@@ -1,0 +1,28 @@
+<a href="/#/">Logout</a>
+
+<h1>Hello <span ng-bind='AC.user.name'></span></h1>
+<h1>Doctor's Appointments</h1>
+
+<label>Search</label>
+<input type='text' placeholder='search...'>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Patient Name</th>
+            <th>Complaint</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat='appointment in AC.appointments'>
+            <td ng-bind='appointment.date | date:"mediumDate"'></td>
+            <td ng-bind='appointment.time | date:"shortTime"'></td>
+            <td ng-bind='appointment._user.name'></td>
+            <td ng-bind='appointment.complaint'></td>
+        </tr>
+    </tbody>
+</table>
+
+<button ng-click='AC.redirectNewApp()'>Add a new appointment</button>

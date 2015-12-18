@@ -1,0 +1,24 @@
+<h1>Please login</h1>
+
+<form name='loginForm'>
+    <label>Name</label>
+    <input type='text' ng-model='UC.user.name' name='name'
+        minlength='2'
+        required>
+    <label>Password: </label>
+    <input type='password' ng-model='UC.user.password' name='password'
+        minlength='2'
+        required>
+    <button ng-click='UC.create()'>Submit</button>
+</form>
+
+<div ng-messages='loginForm.name.$error' style='color:red' role='alert' ng-show='loginForm.name.$submitted'>
+    <div ng-messages='required'>You did enter the name field</div>
+    <div ng-messages='minlength'>Name field is too short</div>
+</div>
+
+<div ng-messages='loginForm.password.$error.$touched' style='color:red' role='alert' ng-show='loginForm.name.$submitted'>
+    <div ng-messages='required'>You did not the password field</div>
+    <div ng-messages='minlength'>Password field is too short</div>
+</div>
+

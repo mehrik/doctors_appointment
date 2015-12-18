@@ -1,0 +1,44 @@
+<h1>New Appointment</h1>
+
+<form name='appointmentForm'>
+    <!-- date choice -->
+    <label>Date:</label>
+    <input type='date' ng-model='AC.newApp.date' name='date'
+        min='{{ AC.today }}'
+        required>
+    <!-- date error messages -->
+    <div ng-messages='appointmentForm.date.$error' style='color:red' role='alert' ng-show='appointmentForm.date.$submitted'>
+        <div ng-message='ng-min'>Appointment must be made in a future date</div>
+    </div>
+
+    <!-- time choices -->
+    <label>Time:</label>
+    <input type='time' ng-model='AC.newApp.time' name='time'
+        min="08:00:00"
+        max="17:00:00"
+        required>
+    <!-- time error messages -->
+    <div ng-messages='appointmentForm.time.$error' style='color:red' role='alert' ng-show='appointmentForm.time.$submitted'>
+        <div ng-message='min'>Please select at time between 8:00am and 5:00pm</div>
+        <div ng-message='max'>Please select at time between 8:00am and 5:00pm</div>
+    </div>
+    <br>
+    <!-- complaints -->
+    <label>Complaint:</label> 
+    <textarea ng-model='AC.newApp.complaint' name='complaint'
+        minlength=2
+        required></textarea>
+    <div ng-messages='appointmentForm.time.$error' style='color:red' role='alert' ng-show='appointmentForm.time.$submitted'>
+        <div ng-message='required'>Complaint field cannot be blank</div>
+        <div ng-message='minlength'>Please enter more than 2 characters</div>
+    </div>
+    <br>
+
+    <button ng-click='AC.redirectMain()'>Cancel</button>
+    <button ng-click='AC.create()' ng-disabled='appointmentForm.$invalid'>Add Appointment</button>
+</form>
+
+<div class='error messages' style='color:red' role='alert'>
+    <div>Day unvailable, max amount of appointments the doctor can have per day is 3</div>
+    <div>You already made an appointment for the day</div>
+</div>
